@@ -8,7 +8,15 @@ public class Main {
         // put termain in raw mode
         Terminal.rawMode();
 
-        // make and run the Game
+        //introduction
+	System.out.print("Welcome to Dungeon Crawler.\n\r");
+	Terminal.pause(2.5);
+	System.out.print("What is your name adventurer?\n\r");
+	Terminal.pause(3);
+	System.out.print("Are you ready to begin?\n\r");
+	Terminal.pause(2);
+
+	// make and run the Game
         Game game = new Game();
         game.run();
 
