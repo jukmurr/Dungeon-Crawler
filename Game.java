@@ -3,6 +3,9 @@
 
 import java.util.ArrayList;
 import ansi_terminal.*;
+import java.io.PrintWriter;
+import java.io.FileNotFoundException;
+import java.io.File;
 
 public class Game {
     private Room room;
@@ -107,7 +110,17 @@ public class Game {
                 redrawMapAndHelp();
                 break;
 
-            // handle movement
+            
+	    case s:
+		//new File saveFile=new File();
+		File file = new File ("save.txt");
+		try{PrintWriter pw=new PrintWriter("save.txt");
+			player.save(pw);
+		}catch(Exception e){
+			System.out.print("oops that didn't work");
+		}
+
+	    // handle movement
             case LEFT: player.move(0, -1, room);
                 break;
             case RIGHT: player.move(0, 1, room);

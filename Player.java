@@ -1,6 +1,7 @@
 // Player.java
 
 import ansi_terminal.*;
+import java.io.PrintWriter;
 
 public class Player extends Character {
     private Inventory items;
@@ -16,6 +17,13 @@ public class Player extends Character {
         // TODO make up your own starting equipment!
         items.addAndEquip(new Item(ItemType.Weapon, "Iron Dagger", 5, 12, 7));
         items.addAndEquip(new Item(ItemType.Armor, "Leather Armor", 15, 20, 3));
+    }
+    public void save(PrintWriter pw){
+	    pw.println(this.getRow());
+	    pw.println(this.getCol());
+	    pw.println(this.getDisplay());
+	    pw.println(this.getColor());
+	    pw.println(this.getHealth());
     }
 
     @Override

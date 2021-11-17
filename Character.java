@@ -1,8 +1,8 @@
 // Character.java
 
 import java.util.ArrayList;
-
 import ansi_terminal.*;
+import java.io.PrintWriter;
 
 public abstract class Character extends Entity {
     // the characters health points
@@ -20,6 +20,14 @@ public abstract class Character extends Entity {
     public abstract int getDamage();
     public abstract int getProtection();
     public abstract String getName();
+
+    /*public void save(PrintWriter pw){
+	    pw.println(this.getRow());
+	    pw.println(this.getCol());
+	    pw.println(this.getDisplay());
+	    pw.println(this.getColor());
+	    pw.println(this.getHealth());
+    }*/
 
     // do damage to another player, returns if they died
     private boolean dealDamage(Character other, Room room) {

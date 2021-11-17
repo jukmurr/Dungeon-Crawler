@@ -3,7 +3,7 @@
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.io.PrintWriter;
 import ansi_terminal.*;
 
 public class Inventory {
@@ -20,6 +20,16 @@ public class Inventory {
     public Inventory(int maxWeight) {
         items = new ArrayList<Item>();
         this.maxWeight = maxWeight;
+    }
+
+    //save method
+    public void save(PrintWriter pw){
+	 for(int i=0;i<items.size();i++){
+	 	pw.println(items.get(i));
+	 	}	
+	pw.println(maxWeight);
+	pw.println(equippedArmor);
+	pw.println(equippedWeapon);
     }
 
     // returns true on success, false when full
