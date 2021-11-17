@@ -1,17 +1,23 @@
 import java.util.Random;
-
+import java.util.ArrayList;
+import java.util.Collections;
 public class EnemyGenerator {
-    private static String[] enemyTypes = {"zombie","ghost","skeleton","rat"};
+    public static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
     public static Enemy generate(int row, int col) {
         Random rng = new Random();
-	
-        //EnemyType type = EnemyType.values()[new Random().nextInt(EnemyType.values().length)];
-	int name = rng.nextInt(4);
-        int damage = rng.nextInt(31);
-        int hp = rng.nextInt(101);
-	int protection = rng.nextInt(25);
+	Enemy zombie = new Enemy("zombie",row,col,30,4,2);
+	Enemy ghost = new Enemy("ghost",row,col,20,3,1);
+	Enemy skeleton = new Enemy("skeleton",row,col,10,3,1);
+	Enemy rat = new Enemy("rat",row,col,15,3,2);
 
-        Enemy enemy = new Enemy(enemyTypes[name], row, col, hp, damage, protection);
-        return enemy;
+	
+        //EnemyType type = EnemyType.values()[new Random().nextInt(EnemyType.values().length)]
+
+        enemies.add(zombie);
+	enemies.add(ghost);
+	enemies.add(skeleton);
+	enemies.add(rat);
+	Collections.shuffle(enemies);
+        return enemies.get(0);
     }
 }

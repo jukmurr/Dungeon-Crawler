@@ -14,7 +14,7 @@ public class Player extends Character {
 
         // give them some basic stuff to start with
         items.addAndEquip(new Item(ItemType.Weapon, "wood sword", 5, 2, 5));
-        items.addAndEquip(new Item(ItemType.Armor, "fur Armor", 8, 15, 5));
+        items.addAndEquip(new Item(ItemType.Armor, "fur Armor", 8, 15, 1));
     }
 
     @Override

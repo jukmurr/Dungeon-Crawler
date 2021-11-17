@@ -1,45 +1,43 @@
 import java.util.*;//The ItemGenerator class creats an object of a random type, name, weight ,value, and strength, then adds it to the user's inventory
 public class ItemGenerator{
-
-	private static String[] weapons = {"sword", "dagger", "bow", "mace", "battle-axe", "war-hammer"};
-	private static String[] armor = {"lether armor", "iron armor", "steel armor","gold armor","fur armor", "diamond armor"};
-	private static String[] other = {"necklace", "bone", "book", "potion", "torch"};
-	private static int weight;
-	private static int value;
-	private static String name;
-	private static int strength;
-	private static ItemType itemType;
-
 	public static Item generate(){
-	Random rng = new Random();
-	//generate a number between 0 and 2, 0=other,1=weapon,2=armor
-	int type = rng.nextInt(3);
-	//creating an 'other' object
-	if(type == 0){
-		itemType = ItemType.Other;
-		int x = rng.nextInt(5);
-		name = other[x];
-		strength = 0;		
+		Random rng = new Random();
+		ArrayList<Item> obj = new ArrayList<Item>();
+		Item one = new Item(ItemType.Weapon, "God Sword", 3, 100,10);
+		Item two = new Item(ItemType.Weapon, "Diamond Sword", 10, 76,8);
+		Item three = new Item(ItemType.Weapon, "Gold Sword", 11, 44,7);
+		Item four = new Item(ItemType.Weapon, "Grass Sword", 1, 30,6);
+		Item five = new Item(ItemType.Weapon, "Silver Sword", 4, 21,7);
+		Item seven = new Item(ItemType.Armor, "God Armor", 3, 100,3);
+		Item eight = new Item(ItemType.Armor, "Leather Armor", 5, 25,1);
+		Item nine = new Item(ItemType.Armor, "Obsidian Armor", 14, 65,1);
+		Item ten = new Item(ItemType.Armor, "Diamond Armor", 10, 55,1);
+		Item eleven = new Item(ItemType.Armor, "Wooden Armor", 5, 4,1);
+		Item twelve = new Item(ItemType.Armor, "Encryption Armor",10, 10,2);
+		Item thirteen = new Item(ItemType.Other, "Alpha Cap", 2, 100,0);
+		Item fourteen = new Item(ItemType.Other, "Keyboard", 6, 6,2);
+		Item fifteen = new Item(ItemType.Other, "Pencil", 1, 2,5);
+		Item sixteen = new Item(ItemType.Other, "Gold Nugget", 10, 100,2);
+		Item seventeen = new Item(ItemType.Other, "Top hat", 1, 10,0);
+		Item eighteen = new Item(ItemType.Other, "Phone charger", 2, 5,0);
+		obj.add(one);
+		obj.add(two);
+		obj.add(three);
+		obj.add(four);
+		obj.add(five);
+		obj.add(seven);
+		obj.add(eight);
+		obj.add(nine);
+		obj.add(ten);
+		obj.add(eleven);
+		obj.add(twelve);
+		obj.add(thirteen);
+		obj.add(fourteen);
+		obj.add(fifteen);
+		obj.add(sixteen);
+		obj.add(seventeen);
+		obj.add(eighteen);
+		int x = rng.nextInt(obj.size());
+		return obj.get(x);
 	}
-	//creating a 'weapon' object
-	if(type == 1){
-		itemType = ItemType.Weapon;
-		strength = rng.nextInt(30);
-		int x = rng.nextInt(6);
-		name = weapons[x];
-	}
-	//creating an 'armor' object
-	if(type == 2){
-		itemType = ItemType.Armor;
-		strength = rng.nextInt(50);
-		int x = rng.nextInt(6);
-		name = armor[x];
-	}
-	weight = rng.nextInt(20);
-	weight = weight + 1;
-	value = rng.nextInt(100);
-	value = value + 1;
-	Item newItem = new Item(itemType, name, weight, value , strength); 
-	return newItem;
-}
 }
