@@ -112,8 +112,8 @@ public class Game {
 
             
 	    case s:
-		//new File saveFile=new File();
-		File file = new File ("save.txt");
+		//new File saveFile=new File("save.txt");
+		//file = File ("save.txt");
 		try{PrintWriter pw=new PrintWriter("save.txt");
 			player.save(pw);
 		}catch(Exception e){

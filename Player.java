@@ -17,13 +17,13 @@ public class Player extends Character {
         items.addAndEquip(new Item(ItemType.Weapon, "wood sword", 5, 2, 5));
         items.addAndEquip(new Item(ItemType.Armor, "fur Armor", 8, 15, 1));
     }
+    
     public void save(PrintWriter pw){
-	    pw.println(this.getRow());
-	    pw.println(this.getCol());
-	    pw.println(this.getDisplay());
-	    pw.println(this.getColor());
-	    pw.println(this.getHealth());
+	    for(Item i:items){
+		    pw.print(item+"\n");
+	    }
     }
+
 
     @Override
     public int getDamage() {
