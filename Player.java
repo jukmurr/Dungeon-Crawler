@@ -19,11 +19,9 @@ public class Player extends Character {
     }
     
     public void save(PrintWriter pw){
-	    for(Item i:items){
-		    pw.print(item+"\n");
-	    }
+	   super.save(pw);
+	   //pw.println(items.print());
     }
-
 
     @Override
     public int getDamage() {
