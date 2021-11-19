@@ -22,11 +22,7 @@ public abstract class Character extends Entity {
     public abstract String getName();
 
     public void save(PrintWriter pw){
-	   // pw.println(this.getRow());
-	   // pw.println(this.getCol());
-	    //pw.println(this.getDisplay());
-	   // pw.println(this.getColor());
-	   super.save(pw);
+	    super.save(pw);
 	    pw.println(this.getHealth());
     }
 

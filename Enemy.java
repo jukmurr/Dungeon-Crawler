@@ -19,6 +19,13 @@ public class Enemy extends Character {
         rng = new Random();
     }
 
+    public void save(PrintWriter pw){
+	    super.save(pw);
+	    pw.println(this.getName());
+	    pw.println(this.getDamage());
+	    pw.println(this.getProtection());
+    }
+
     @Override
     public int getDamage() {
         return damage;

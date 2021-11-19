@@ -44,7 +44,8 @@ public class Entity {
     }
 
     public void save(PrintWriter pw){
-	    pw.println(this.getPosition());
+	    pw.println(this.getRow());
+	    pw.println(this.getCol());
 	    pw.println(this.getDisplay());
 	    pw.println(this.getColor());
     }
