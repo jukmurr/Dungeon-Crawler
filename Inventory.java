@@ -25,11 +25,16 @@ public class Inventory {
     //save method
     public void save(PrintWriter pw){
 	 for(int i=0;i<items.size();i++){
-	 	pw.println(items.get(i));
+	 	pw.println(items.get(i).getName());
+	 	pw.println(items.get(i).getWeight());
+	 	pw.println(items.get(i).getValue());
+	 	pw.println(items.get(i).getStrength());
+	 	pw.println(items.get(i).getType());
 	 	}	
 	pw.println(maxWeight);
-	pw.println(equippedArmor);
-	pw.println(equippedWeapon);
+	pw.println(equippedArmor.getName()+"/n"+equippedArmor.getWeight()+"/n"+equippedArmor.getValue()+"/n"+equippedArmor.getStrength());
+	pw.println(equippedWeapon.getName()+"/n"+equippedWeapon.getWeight()+"/n"+equippedWeapon.getValue()+"/n"+equippedWeapon.getStrength());
+    	pw.close();
     }
 
     // returns true on success, false when full

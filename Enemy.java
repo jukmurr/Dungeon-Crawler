@@ -2,6 +2,7 @@
 
 import java.util.Random;
 import ansi_terminal.*;
+import java.io.PrintWriter;
 
 public class Enemy extends Character {
     private String name;
@@ -24,6 +25,7 @@ public class Enemy extends Character {
 	    pw.println(this.getName());
 	    pw.println(this.getDamage());
 	    pw.println(this.getProtection());
+            pw.close();
     }
 
     @Override
