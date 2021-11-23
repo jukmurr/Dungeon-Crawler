@@ -21,7 +21,6 @@ public class Player extends Character {
     public void save(PrintWriter pw){
 	   super.save(pw);
 	   //pw.println(items.print());
-    	   pw.close();
     }
 
     @Override

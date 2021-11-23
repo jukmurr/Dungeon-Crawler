@@ -115,10 +115,15 @@ public class Game {
 	    case s:
 		try{PrintWriter pw=new PrintWriter("save.txt");
 			player.save(pw);
-			//for(Enemy enemy:enemies){
-			//	enemy.save(pw);
-			//}
-			enemies.get(0).save(pw);
+			for(Enemy enemy:enemies){
+				enemy.save(pw);
+			}
+			for(Box object:boxes){
+				object.save(pw);
+			}
+			player.getInventory().save(pw);
+			
+			pw.close();
 		}catch(Exception e){
 			System.out.print("oops that didn't work");
 		}

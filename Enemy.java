@@ -21,11 +21,11 @@ public class Enemy extends Character {
     }
 
     public void save(PrintWriter pw){
+	    pw.println("enemy");
 	    super.save(pw);
 	    pw.println(this.getName());
 	    pw.println(this.getDamage());
 	    pw.println(this.getProtection());
-            pw.close();
     }
 
     @Override
