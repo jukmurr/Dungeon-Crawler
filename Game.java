@@ -1,4 +1,4 @@
-// Game.java
+//Game.java
 // contains logic for running the Game
 
 import java.util.ArrayList;
@@ -8,13 +8,14 @@ import java.io.FileNotFoundException;
 import java.io.File;
 
 public class Game {
-    private Room room;
+    private World world;
     private Player player;
     private ArrayList<Box> boxes;
-    private ArrayList<Enemy> enemies;
+    private ArrayList<Enemy> enemies; 
+    private ArrayList<String> roomNames;
 
     public Game() {
-        room = new Room();
+        world = new World();
         player = new Player(room.getPlayerStart());
         boxes = room.getBoxes();
         enemies = room.getEnemies();

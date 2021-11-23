@@ -4,69 +4,63 @@
 
 import java.util.ArrayList;
 import ansi_terminal.*;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.util.Scanner;
+import java.io.FileNotFoundException;
+import java.io.File;
+import java.util.Arrays;
 
 public class Room {
     // the grid holds the room geometry
-    private String[] grid;
-
+    Scanner sc;
+    private String fileName;
     // the size of the room
     private int rows;
     private int cols;
+    private String[] grid;
+    private String name;
+    private File file;
+    private String fileLine;
 
-    public Room() {
+    public Room(String name) {
         // this initializes the room to one specific space
         rows = 30;
         cols = 60;
-
+	this.name = name;
         // the actual room geometry
         // the i cells refer to where an item should be placed at
-        grid  = new String[] {
-            "##################                ######################    ",
-            "##              ##                ##      i           ##    ",
-            "##  @           ###########       ##        *         ##    ",
-            "##                       ##       ##                  ##    ",
-            "##              #######  ##       ##################  ##    ",
-            "##              ##   ##  ##                       ##  ##    ",
-            "##################   ##  ##################       ##  ##    ",
-            "                     ##                  ##       ##  ##    ",
-            "                     ##   *  i           ##       ##  ##    ",
-            "                     ##                  ##       ##  ##    ",
-            "                     ##############  ######       ##  ##    ",
-            "                                 ##  ##           ##  ##    ",
-            "                                 ##  ##           ##  ##    ",
-            "                       ############  ###############  ######",
-            "                       ##                                 ##",
-            "                       ##                                 ##",
-            "    #####################                  *              ##",
-            "    ##                                                    ##",
-            "    ##  #################                                 ##",
-            "    ##  ##             ##                                 ##",
-            "    ##  ##             #################  ##################",
-            "    ##  ##                            ##  ##                ",
-            "    ##  ##                            ##  ##                ",
-            "    ##  ##                       #######  #######           ",
-            "    ##  ##                       ##            ##           ",
-            "######  ####                     ##  i  *      ##           ",
-            "##        ##                     ##            ##           ",
-            "## i  *   ##                     ################           ",
-            "##        ##                                                ",
-            "############                                                "
-        };
+	try {
+		sc = new Scanner(new BufferedReader(new FileReader(name)));
+		grid = new String[30];
+		for (int i = 0; i < 30; i++){
+			while (sc.hasNextLine()){
+				fileLine = sc.nextLine();
+				grid[i] = (fileLine);
+			}
+		}
+		//File file = new File(input.nextLine())};
+	}
+	catch (FileNotFoundException e) {
+		System.out.println("Cannot find the room file");
+	}
     }
 
+    public String[] getGrid() {
+		return grid;
+    }
     // returns the player's strting location in this room
-    public Position getPlayerStart() {
-        for (int row = 0; row < rows; row++) {
-            for (int col = 0; col < cols; col++) {
-                if (grid[row].charAt(col) == '@') {
-                    return new Position(row, col);
+	public Position getPlayerStart() {
+        	for (int row = 0; row < rows; row++) {
+           		for (int col = 0; col < cols; col++) {
+                		if (grid[row].charAt(col) == '@') {
+                    			return new Position(row, col);
                 }
             }
         }
 
         return null;
     }
-
     // returns a set of item boxes for this map, this is here because it depends on
     // the room geometry for where the boxes make sense to be
     public ArrayList<Box> getBoxes() {
@@ -104,29 +98,28 @@ public class Room {
         return cols;
     }
 
-    // draws the map to the screen
     public void draw() {
-        Terminal.clear();
-        for (int row = 0; row < rows; row++) {
+     	Terminal.clear();
+       	for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
-                char cell = grid[row].charAt(col);
-                if (cell == '#') {
-                    // a unicode block symbol
+               	char cell = grid[row].charAt(col);
+               	if (cell == '#') {
+                // a unicode block symbol
                     System.out.print('\u2588');
                 } else {
-                    // whatever else, just draw a blank (we DONT draw starting items from map)
-                    System.out.print(' ');
-                }
-            }
+                   // whatever else, just draw a blank (we DONT draw starting items from map)
+                   System.out.print(' ');
+               	}
+           }
 
             System.out.print("\n\r");
-        }
-    }
+       	}
+    }	
 
-    // returns if a given cell in the map is walkable or not
-    public boolean canGo(int row, int col) {
-        return grid[row].charAt(col) != '#';
-    }
+    // draws the map to the screen
+	public boolean canGo(int row, int col) {
+        	return grid[row].charAt(col) != '#';
+    }	
 }
 
 
