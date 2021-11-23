@@ -1,11 +1,12 @@
 // Game.java
 // contains logic for running the Game
-
+import java.util.Scanner;
 import java.util.ArrayList;
 import ansi_terminal.*;
 import java.io.PrintWriter;
 import java.io.FileNotFoundException;
 import java.io.File;
+import java.io.FileInputStream;
 
 public class Game {
     private Room room;
@@ -19,6 +20,23 @@ public class Game {
         boxes = room.getBoxes();
         enemies = room.getEnemies();
     }
+    public void loadGame(){
+	    try{File f= new File("save.txt");
+		    Scanner in = new Scanner(f);
+		    Player p = new Player(in);
+		    for(Enemy enemy:enemies){
+			   Enemy e = new Enemy(in);
+		    }
+		    for (Box object:boxes){
+			   Box b = new Box(in);
+		    } 
+		    Inventory i = new Inventory(in);
+	    }catch(Exception e){
+		    System.out.println("Oops something went wrong");
+	    }
+    } 
+		    
+
 
     // prints a help menu to the left of the map
     private void showHelp() {
@@ -31,7 +49,7 @@ public class Game {
                          "Equip weapon: w",
                          "Equip armor: a",
                          "Quit: q",
-			 "Save: s"
+			 "Save: m"
         };
         Terminal.setForeground(Color.GREEN);
         for (int row = 0; row < cmds.length; row++) {
@@ -112,7 +130,7 @@ public class Game {
                 break;
 
             
-	    case s:
+	    case m:
 		try{PrintWriter pw=new PrintWriter("save.txt");
 			player.save(pw);
 			for(Enemy enemy:enemies){
@@ -123,8 +141,11 @@ public class Game {
 			}
 			player.getInventory().save(pw);
 			
+			
 			pw.close();
-		}catch(Exception e){
+		}
+	
+		catch(Exception e){
 			System.out.print("oops that didn't work");
 		}
 

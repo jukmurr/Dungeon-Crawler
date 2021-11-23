@@ -1,6 +1,6 @@
 // Box.java
 // represents a pickup-able item
-
+import java.util.Scanner;
 import ansi_terminal.*;
 import java.io.PrintWriter;
 
@@ -12,6 +12,16 @@ public class Box extends Entity {
     public Box(int row, int col, Item item) {
         super(row, col, 'i', Color.MAGENTA);
         this.item = item;
+    }
+    public Box(Scanner in){
+	    super(in);
+	    in.nextLine();
+	    String name = in.nextLine();
+	    int weight = in.nextInt();
+	    int value = in.nextInt();
+	    int strength = in.nextInt();
+	    
+
     }
     public void save(PrintWriter pw){
 	    pw.println("Box");
