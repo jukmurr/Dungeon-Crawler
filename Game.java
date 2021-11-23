@@ -31,7 +31,8 @@ public class Game {
                          "List items: l",
                          "Equip weapon: w",
                          "Equip armor: a",
-                         "Quit: q"
+                         "Quit: q",
+			 "Save: s"
         };
         Terminal.setForeground(Color.GREEN);
         for (int row = 0; row < cmds.length; row++) {
@@ -113,10 +114,17 @@ public class Game {
 
             
 	    case s:
-		//new File saveFile=new File();
-		File file = new File ("save.txt");
 		try{PrintWriter pw=new PrintWriter("save.txt");
 			player.save(pw);
+			for(Enemy enemy:enemies){
+				enemy.save(pw);
+			}
+			for(Box object:boxes){
+				object.save(pw);
+			}
+			player.getInventory().save(pw);
+			
+			pw.close();
 		}catch(Exception e){
 			System.out.print("oops that didn't work");
 		}

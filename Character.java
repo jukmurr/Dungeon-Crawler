@@ -21,13 +21,10 @@ public abstract class Character extends Entity {
     public abstract int getProtection();
     public abstract String getName();
 
-    /*public void save(PrintWriter pw){
-	    pw.println(this.getRow());
-	    pw.println(this.getCol());
-	    pw.println(this.getDisplay());
-	    pw.println(this.getColor());
+    public void save(PrintWriter pw){
+	    super.save(pw);
 	    pw.println(this.getHealth());
-    }*/
+    }
 
     // do damage to another player, returns if they died
     private boolean dealDamage(Character other, Room room) {

@@ -9,8 +9,8 @@ public class Main {
 		Terminal.rawMode();
 		//introduction
 		System.out.print("Welcome to Dungeon Crawler.\n\r");
-		Terminal.pause(2.5);
-		String name = Terminal.getLine("What is your name adventurer?");
+		Terminal.pause(2);
+		String name = Terminal.getLine("What is your name adventurer? ");
 		Terminal.pause(2);
 
 		// make and run the Game

@@ -2,6 +2,7 @@
 
 import java.util.Random;
 import ansi_terminal.*;
+import java.io.PrintWriter;
 
 public class Enemy extends Character {
     private String name;
@@ -17,6 +18,14 @@ public class Enemy extends Character {
         this.protection = protection;
         this.battleActive = false;
         rng = new Random();
+    }
+
+    public void save(PrintWriter pw){
+	    pw.println("enemy");
+	    super.save(pw);
+	    pw.println(this.getName());
+	    pw.println(this.getDamage());
+	    pw.println(this.getProtection());
     }
 
     @Override

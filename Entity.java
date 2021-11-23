@@ -1,6 +1,6 @@
 // Entity.java
 // this class represents one moveable, drawable thing in the game
-
+import java.io.PrintWriter;
 import ansi_terminal.*;
 
 public class Entity {
@@ -43,6 +43,12 @@ public class Entity {
 	    return color;
     }
 
+    public void save(PrintWriter pw){
+	    pw.println(this.getRow());
+	    pw.println(this.getCol());
+	    pw.println(this.getDisplay());
+	    pw.println(this.getColor());
+    }
 
     // translate the entity in space, unless it would hit a wall
     public boolean move(int rowChange, int colChange, Room room) {
