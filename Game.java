@@ -16,7 +16,7 @@ public class Game {
 
     public Game() {
         world = new World();
-        player = new Player(room.getPlayerStart());
+	player = new Player(world.getRoomCurrent.getPlayerStart());
         boxes = room.getBoxes();
         enemies = room.getEnemies();
     }
@@ -36,7 +36,7 @@ public class Game {
         };
         Terminal.setForeground(Color.GREEN);
         for (int row = 0; row < cmds.length; row++) {
-            Terminal.warpCursor(row + 1, room.getCols());
+            Terminal.warpCursor(row + 1, world.getRoomCurrent.getCols());
             System.out.print(cmds[row]);
         }
         Terminal.reset();

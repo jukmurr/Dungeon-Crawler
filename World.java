@@ -24,20 +24,17 @@ public class World {
 	room1 = new Room("Room1.txt");
 	room2 = new Room("Room2.txt");
 	room3 = new Room("Room3.txt");
-	}
-
-    public Room getCurrentRoom(){
-	    if (room1.include("@")){
-		    return room1;
-	    }
-	    if (getPlayerStart() == room1){
-		    return room1;
-	    }
-	    if (room1.contains("@")){
-		    return room1;
-	    }
-	    if (getPlayerStart.equals(room1)){
-		    return room1;
-	    }
     }
+	
+    public Room getRoomCurrent(){
+	if (room1.getCurrentRoom() == true){
+		return room1;
+	} else if (room2.getCurrentRoom() == true){
+		return room2;
+	} else if (room3.getCurrentRoom() == true){
+		return room3;
+	}
+	return null;
+    }
+
 }

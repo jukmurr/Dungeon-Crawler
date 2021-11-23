@@ -119,8 +119,18 @@ public class Room {
     // draws the map to the screen
 	public boolean canGo(int row, int col) {
         	return grid[row].charAt(col) != '#';
-    }	
+    }
+	
+	public boolean getCurrentRoom(){
+		for (int row = 0; row < rows; row++) {
+           		for (int col = 0; col < cols; col++) {
+                		if (grid[row].charAt(col) == '@') {
+                    			return true;
+				}
+			}
+		}
+		return false;
+	}
 }
-
 
 
