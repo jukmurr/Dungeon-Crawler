@@ -16,9 +16,10 @@ public class Game {
 
     public Game() {
         world = new World();
-	player = new Player(world.getRoomCurrent.getPlayerStart());
-        boxes = room.getBoxes();
-        enemies = room.getEnemies();
+	player = new Player(world.getRoomCurrent().getPlayerStart());
+        boxes = world.getRoomCurrent().getBoxes();
+        enemies = world.getRoomCurrent().getEnemies();
+	
     }
 
     // prints a help menu to the left of the map
@@ -36,7 +37,7 @@ public class Game {
         };
         Terminal.setForeground(Color.GREEN);
         for (int row = 0; row < cmds.length; row++) {
-            Terminal.warpCursor(row + 1, world.getRoomCurrent.getCols());
+            Terminal.warpCursor(row + 1, world.getRoomCurrent().getCols());
             System.out.print(cmds[row]);
         }
         Terminal.reset();
@@ -45,13 +46,13 @@ public class Game {
     // right under the map we keep a line for status messages
     private void setStatus(String mesg) {
         // clear anything old first
-        Terminal.warpCursor(room.getRows(), 0);
+        Terminal.warpCursor(world.getRoomCurrent().getRows(), 0);
         for (int i = 0; i < 100; i++) {
             System.out.print(" ");
         }
 
         // then print the message
-        Terminal.warpCursor(room.getRows(), 0);
+        Terminal.warpCursor(world.getRoomCurrent().getRows(), 0);
         System.out.print(mesg);
     }
 
@@ -130,13 +131,13 @@ public class Game {
 		}
 
 	    // handle movement
-            case LEFT: player.move(0, -1, room);
+            case LEFT: player.move(0, -1, world.getRoomCurrent());
                 break;
-            case RIGHT: player.move(0, 1, room);
+            case RIGHT: player.move(0, 1, world.getRoomCurrent());
                 break;
-            case UP: player.move(-1, 0, room);
+            case UP: player.move(-1, 0, world.getRoomCurrent());
                 break;
-            case DOWN: player.move(1, 0, room);
+            case DOWN: player.move(1, 0, world.getRoomCurrent());
                 break;
 
             // and finally the quit command
@@ -150,7 +151,7 @@ public class Game {
     // this is called when we need to redraw the room and help menu
     // this happens after going into a menu like for choosing items
     private void redrawMapAndHelp() {
-        room.draw();
+        world.getRoomCurrent().draw();
         showHelp();
     }
 
@@ -182,7 +183,7 @@ public class Game {
         // now do the battle
         if (opponent != null) {
             opponent.setBattleActive();
-            return player.fight(opponent, room, enemies);
+            return player.fight(opponent, world.getRoomCurrent(), enemies);
         }
 
         return true;
@@ -204,7 +205,7 @@ public class Game {
             player.draw();
 
             // read a key from the user
-            Terminal.warpCursor(room.getRows() + 1, 0);
+            Terminal.warpCursor(world.getRoomCurrent().getRows() + 1, 0);
             Key key = Terminal.getKey();
             playing = handleKey(key);
 
@@ -213,7 +214,7 @@ public class Game {
 
             // move the enemies
             for (Enemy enemy : enemies) {
-                enemy.walk(room);
+                enemy.walk(world.getRoomCurrent());
             }
 
             // check for battles
