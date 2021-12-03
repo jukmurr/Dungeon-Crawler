@@ -34,10 +34,8 @@ public class Room {
 		sc = new Scanner(new BufferedReader(new FileReader(name)));
 		grid = new String[30];
 		for (int i = 0; i < 30; i++){
-			while (sc.hasNextLine()){
-				fileLine = sc.nextLine();
-				grid[i] = (fileLine);
-			}
+			fileLine = sc.nextLine();
+			grid[i] = (fileLine);
 		}
 		//File file = new File(input.nextLine())};
 	}
@@ -121,16 +119,6 @@ public class Room {
         	return grid[row].charAt(col) != '#';
     }
 	
-	public boolean getCurrentRoom(){
-		for (int row = 0; row < rows; row++) {
-           		for (int col = 0; col < cols; col++) {
-                		if (grid[row].charAt(col) == '@') {
-                    			return true;
-				}
-			}
-		}
-		return false;
-	}
 }
 
 

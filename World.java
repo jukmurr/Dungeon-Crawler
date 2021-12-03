@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 public class World {
     // the grid holds the room geometry
     Scanner stdin = new Scanner(System.in);
+    public Room currentRoom;
     public String response;
     public Room room1;
     public Room room2;
@@ -24,17 +25,27 @@ public class World {
 	room1 = new Room("Room1.txt");
 	room2 = new Room("Room2.txt");
 	room3 = new Room("Room3.txt");
+  	currentRoom = room1;
     }
 	
+//    public Room getRoomCurrent(Position position){
+    public boolean moveRoom(Position position){
+	    currentRoom = room1;
+	    if ((currentRoom == room1) && ((position.getRow() == 27) && (position.getCol() == 45))){
+			    currentRoom = room2;
+			    return true;
+	    } else if ((currentRoom.equals(room2)) && ((position.getRow() == 28) && (position.getCol() == 34))){
+			    currentRoom = room3;
+			    return true;
+	    } else if ((currentRoom.equals(room3)) && ((position.getRow() == 24) && (position.getCol() == 18))){
+			    currentRoom = room1;
+			    return true;
+	    }
+    	return false;
+    }
+
     public Room getRoomCurrent(){
-	if (room1.getCurrentRoom() == true){
-		return room1;
-	} else if (room2.getCurrentRoom() == true){
-		return room2;
-	} else if (room3.getCurrentRoom() == true){
-		return room3;
-	}
-	return null;
+	return currentRoom;
     }
 
 }

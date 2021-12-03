@@ -228,7 +228,10 @@ public class Game {
             if (thingHere != null) {
                 setStatus("Here you find: " + thingHere.getItem().getName());
             }
-        }
-    }
+	    if (world.moveRoom(player.getPosition())){
+		redrawMapAndHelp(); 
+       	    }
+    	}
+    }	
 }
 
