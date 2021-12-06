@@ -23,7 +23,7 @@ public class Game {
     public void loadGame(){
 	    try{File f= new File("save.txt");
 		    Scanner in = new Scanner(f);
-		    Player p = new Player(in);
+		    player = new Player(in);
 		    for(Enemy enemy:enemies){
 			   Enemy e = new Enemy(in);
 		    }
