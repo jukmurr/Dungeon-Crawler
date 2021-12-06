@@ -19,6 +19,11 @@ public class Entity {
         this.display = display;
         this.color = color;
     }
+    /**
+      *Constructor that reads in from the save.txt file. 
+      *@param Scanner parameter takes in a scanner object called in
+      *@return Entity Returns an entity object with the values listed in the save.txt file.
+      */
     public Entity(Scanner in){
 	    int row = in.nextInt();
 	    int col = in.nextInt();

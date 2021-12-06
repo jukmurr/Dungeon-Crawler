@@ -1,5 +1,9 @@
 //Game.java
 // contains logic for running the Game
+/**
+  *The Game class contains all of the logic for running the game
+  *@author LM
+  */
 import java.util.Scanner;
 import java.util.ArrayList;
 import ansi_terminal.*;
@@ -27,6 +31,11 @@ public class Game {
 
 
     // prints a help menu to the left of the map
+    /**
+      *Method shows a list of the possible commands in the game.  
+      *Load isn't working how it is supposed to, but the logic is there.
+      *
+      */
     private void showHelp() {
         String[] cmds = {"Commands:",
                          "---------",
@@ -93,6 +102,11 @@ public class Game {
     }
 
     // handle the key which was read - return false if we quit the game
+    /**
+      *Deals with the logic if a command is pressed. Added case for n (load) and m (save)
+      *@return boolean
+      *@param key paramter takes in a Key for the key entered
+      */
     private boolean handleKey(Key key) {
         switch (key) {
             case p:

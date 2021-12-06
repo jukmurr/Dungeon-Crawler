@@ -20,6 +20,11 @@ public class Player extends Character {
         items.addAndEquip(new Item(ItemType.Armor, "fur Armor", 8, 15, 1));
 	this.score = 0;
     }
+    /**
+      *Constructor that reads in from the save.txt file
+      *@param Scanner parameter  takes in a scanner object called in
+      *@return Player Returns a player object with the values listed in the save.txt file
+      */
     public Player(Scanner in) {
 	    super(in);
     }
