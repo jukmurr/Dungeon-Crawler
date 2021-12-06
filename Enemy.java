@@ -8,14 +8,16 @@ public class Enemy extends Character {
     private String name;
     private int damage;
     private int protection;
+    private int score;
     private static Random rng;
     private boolean battleActive;
 
-    public Enemy(String name, int row, int col, int hp, int damage, int protection) {
+    public Enemy(String name, int row, int col, int hp, int damage, int protection, int score) {
         super(row, col, '*', Color.RED, hp);
         this.name = name;
         this.damage = damage;
         this.protection = protection;
+	this.score = score;
         this.battleActive = false;
         rng = new Random();
     }
@@ -42,10 +44,18 @@ public class Enemy extends Character {
     public String getName() {
         return name;
     }
+    @Override
+    public int getScore() {
+	return score;
+    }
+    @Override
+    public void setScore(int n){
+    }
 
     public void setBattleActive() {
         battleActive = true;
     }
+    
 
     // randomly move this enemy in the room
     public void walk(Room room) {
