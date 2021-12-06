@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 public class Box extends Entity {
     // the Item that is in the box
     private Item item;
+    private ItemType type;
 
     // add a box with a given item in it
     public Box(int row, int col, Item item) {
@@ -16,6 +17,7 @@ public class Box extends Entity {
     public Box(Scanner in){
 	    super(in);
 	    in.nextLine();
+	    type = ItemType.valueOf(in.next());
 	    String name = in.nextLine();
 	    int weight = in.nextInt();
 	    int value = in.nextInt();

@@ -23,21 +23,6 @@ public class Game {
         boxes = world.getRoomCurrent().getBoxes();
         enemies = world.getRoomCurrent().getEnemies();
     }
-    public void loadGame(){
-	    try{File f= new File("save.txt");
-		    Scanner in = new Scanner(f);
-		    player = new Player(in);
-		    for(Enemy enemy:enemies){
-			   Enemy e = new Enemy(in);
-		    }
-		    for (Box object:boxes){
-			   Box b = new Box(in);
-		    } 
-		    Inventory i = new Inventory(in);
-	    }catch(Exception e){
-		    System.out.println("Oops something went wrong");
-	    }
-    } 
 		    
 
 
@@ -52,7 +37,8 @@ public class Game {
                          "Equip weapon: w",
                          "Equip armor: a",
                          "Quit: q",
-			 "Save: m"
+			 "Save: m",
+			 "Load: n"
         };
         Terminal.setForeground(Color.GREEN);
         for (int row = 0; row < cmds.length; row++) {
@@ -133,7 +119,7 @@ public class Game {
                 break;
 
             
-	    case m:
+	    case n:
 		try{File f = new File("save.txt");
 			Scanner in = new Scanner(f);
 			player = new Player(in);
@@ -146,9 +132,10 @@ public class Game {
 			Inventory i = new Inventory(in);
 		}catch(Exception e){
 			System.out.println("Oops something went wrong");
+		}
 
            
-	    case s:
+	    case m:
 		try{PrintWriter pw=new PrintWriter("save.txt");
 			player.save(pw);
 			for(Enemy enemy:enemies){
