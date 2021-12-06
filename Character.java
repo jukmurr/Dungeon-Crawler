@@ -12,6 +12,11 @@ public abstract class Character extends Entity {
         super(row, col, display, color);
         this.hp = hp;
     }
+    /**
+      *Constructor that reads in from the save.txt file. 
+      *@param Scanner parameter takes in a scanner object called in
+      *@return Character Returns a character object with the values listed in the save.txt file.
+      */
     public Character(Scanner in){
 	    super(in);
 	    hp = in.nextInt();

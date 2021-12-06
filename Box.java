@@ -14,6 +14,11 @@ public class Box extends Entity {
         super(row, col, 'i', Color.MAGENTA);
         this.item = item;
     }
+    /**
+      *Construcotr that reads in from the save.txt file.
+      *@param Scanner paramater takes in a scanner object called in
+      *@return Box Returns a Box object with the values listed in the save.txt file.
+      */
     public Box(Scanner in){
 	    super(in);
 	    in.nextLine();

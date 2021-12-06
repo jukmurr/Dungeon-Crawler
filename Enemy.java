@@ -22,6 +22,11 @@ public class Enemy extends Character {
         this.battleActive = false;
         rng = new Random();
     }
+    /**
+      *Constructor that reads in from the save.txt file.
+      *@param Scanner Parameter takes in a scanner object called in
+      *@return Enemy Returns an enemy object with the values listed in the save.txt file
+      */
     public Enemy(Scanner in){
 	    super(in);
 	    in.nextLine();

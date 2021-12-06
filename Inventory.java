@@ -23,6 +23,11 @@ public class Inventory {
         items = new ArrayList<Item>();
         this.maxWeight = maxWeight;
     }
+    /**
+      *Constructor that reads in from the save.txt file.
+      *@param Scanner parameter takes in a scanner object called in
+      *@return Inventory Returns an Inventory with the values listed in the save.txt file
+      */
     public Inventory(Scanner in){
 	    maxWeight = in.nextInt();
 	    for (int i=0;i<items.size(); i++){
