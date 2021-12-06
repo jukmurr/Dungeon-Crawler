@@ -44,7 +44,7 @@ public class World {
 	    if ((currentRoom == room1) && ((position.getRow() == 27) && (position.getCol() == 6))){
 			    currentRoom = room2;
 			    return true;
-	    } else if ((currentRoom.equals(room2)) && ((position.getRow() == 2) && (position.getCol() == 5))){
+	    } else if ((currentRoom.equals(room2)) && ((position.getRow() == 3) && (position.getCol() == 5))){
 			    currentRoom = room3;
 			    return true;
 	    }
