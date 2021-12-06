@@ -28,6 +28,7 @@ public class Enemy extends Character {
 	    pw.println(this.getName());
 	    pw.println(this.getDamage());
 	    pw.println(this.getProtection());
+	    pw.println(this.getScore());
     }
 
     @Override
