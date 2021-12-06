@@ -12,20 +12,13 @@ public class Main {
 		Terminal.pause(2);
 		String name = Terminal.getLine("What is your name adventurer? ");
 		Terminal.pause(2);
+		String age = Terminal.getLine("What is your age adventurer? ");
+		Terminal.pause(2);
 		System.out.print("Defeat all of the enemies without dying and you win the game.\n\r");
 		Terminal.pause(2);
-		String input = Terminal.getLine("Would you like to load your game? (Y/N)");
-		if (input.equals("Y")){
-			Game gamei = new Game();
-			gamei.loadGame();
-			Terminal.cookedMode();
-		}
-		else if (input.equals("N")){
-			// make and run the Game
-			Game game = new Game();
-			game.run();
-			Terminal.cookedMode();
-		}
+		Game game = new Game();
+		game.run();
+		Terminal.cookedMode();
 	}
 }
 
