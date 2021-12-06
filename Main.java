@@ -8,16 +8,16 @@ public class Main {
 		// put termain in raw mode
 		Terminal.rawMode();
 		//introduction
-		System.out.print("Welcome to Dungeon Crawler.\n\r");
+		System.out.print("Welcome to our Dungeon Crawler game.\n\r");
 		Terminal.pause(2);
 		String name = Terminal.getLine("What is your name adventurer? ");
 		Terminal.pause(2);
-
-		// make and run the Game
+		String age = Terminal.getLine("What is your age adventurer? ");
+		Terminal.pause(2);
+		System.out.print("Defeat all of the enemies without dying and you win the game.\n\r");
+		Terminal.pause(2);
 		Game game = new Game();
 		game.run();
-
-		// put terminal back into cooked mode
 		Terminal.cookedMode();
 	}
 }

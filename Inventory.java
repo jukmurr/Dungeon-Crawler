@@ -9,10 +9,12 @@ import ansi_terminal.*;
 public class Inventory {
     // the actual list of items
     private ArrayList<Item> items;
+    private ItemType type;
 
     // which item is equipped, if any
     private Item equippedArmor;
     private Item equippedWeapon;
+
 
     // the max weight limit for the player here
     private int maxWeight;
@@ -21,6 +23,30 @@ public class Inventory {
         items = new ArrayList<Item>();
         this.maxWeight = maxWeight;
     }
+    public Inventory(Scanner in){
+	    maxWeight = in.nextInt();
+	    for (int i=0;i<items.size(); i++){
+		    String name = in.nextLine();
+		    int weight = in.nextInt();
+		    int value = in.nextInt();
+		    int strength = in.nextInt();
+		    type = ItemType.valueOf(in.next());
+
+	    }
+	    String eaName = in.nextLine();
+	    int eaWeight = in.nextInt();
+	    int eaValue = in.nextInt();
+	    int eaStrength = in.nextInt();
+	    String ewName = in.nextLine();
+	    int ewWeight = in.nextInt();
+	    int ewValue = in.nextInt();
+	    int ewStrength = in.nextInt();
+    }
+
+
+	    
+
+
 
     //save method
     public void save(PrintWriter pw){

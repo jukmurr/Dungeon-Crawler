@@ -3,6 +3,7 @@
 import java.util.ArrayList;
 import ansi_terminal.*;
 import java.io.PrintWriter;
+import java.util.Scanner;
 
 public abstract class Character extends Entity {
     // the characters health points
@@ -10,6 +11,10 @@ public abstract class Character extends Entity {
     public Character(int row, int col, char display, Color color, int hp) {
         super(row, col, display, color);
         this.hp = hp;
+    }
+    public Character(Scanner in){
+	    super(in);
+	    hp = in.nextInt();
     }
 
     // get the hp, damage, protection and name of character

@@ -1,7 +1,10 @@
 // Room.java
 // provides code for the drawing of a room
 // also provides starting locations for the player, boxes, and enemies
-
+/**
+  * Creates a room for a game.
+  * @author JA
+  */
 import java.util.ArrayList;
 import ansi_terminal.*;
 import java.io.FileReader;
@@ -23,6 +26,11 @@ public class Room {
     private File file;
     private String fileLine;
 
+    /**
+      * Constructs a room by reading in a file and by taking a size for it,
+      * it turns the room into a grid
+      * @param name name of the file
+      */
     public Room(String name) {
         // this initializes the room to one specific space
         rows = 30;
@@ -74,7 +82,7 @@ public class Room {
         return boxes;
     }
 
-    // returns a set of enemies from this map, similarly to the boxes above
+// returns a set of enemies from this map, similarly to the boxes above
     public ArrayList<Enemy> getEnemies() {
         ArrayList<Enemy> enemies = new ArrayList<Enemy>();
         for (int row = 0; row < rows; row++) {
@@ -104,7 +112,9 @@ public class Room {
                	if (cell == '#') {
                 // a unicode block symbol
                     System.out.print('\u2588');
-                } else {
+		} else if (cell == '!'){
+			System.out.print("!");
+		}else {
                    // whatever else, just draw a blank (we DONT draw starting items from map)
                    System.out.print(' ');
                	}
@@ -115,10 +125,9 @@ public class Room {
     }	
 
     // draws the map to the screen
-	public boolean canGo(int row, int col) {
+    public boolean canGo(int row, int col) {
         	return grid[row].charAt(col) != '#';
-    }
-	
+    }	
 }
 
 

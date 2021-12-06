@@ -2,6 +2,7 @@
 // this class represents one moveable, drawable thing in the game
 import java.io.PrintWriter;
 import ansi_terminal.*;
+import java.util.Scanner;
 
 public class Entity {
     // the location of the entity in space
@@ -17,6 +18,11 @@ public class Entity {
         position = new Position(row, col);
         this.display = display;
         this.color = color;
+    }
+    public Entity(Scanner in){
+	    int row = in.nextInt();
+	    int col = in.nextInt();
+	    char display = in.next().charAt(0);
     }
 
     // move the entity to a new location
@@ -47,7 +53,6 @@ public class Entity {
 	    pw.println(this.getRow());
 	    pw.println(this.getCol());
 	    pw.println(this.getDisplay());
-	    pw.println(this.getColor());
     }
 
     // translate the entity in space, unless it would hit a wall
