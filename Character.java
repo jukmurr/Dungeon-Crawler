@@ -8,7 +8,6 @@ import java.util.Scanner;
 public abstract class Character extends Entity {
     // the characters health points
     private int hp;
-
     public Character(int row, int col, char display, Color color, int hp) {
         super(row, col, display, color);
         this.hp = hp;
@@ -25,6 +24,8 @@ public abstract class Character extends Entity {
     public abstract int getDamage();
     public abstract int getProtection();
     public abstract String getName();
+    public abstract int getScore();
+    public abstract void setScore(int n);
 
     public void save(PrintWriter pw){
 	    super.save(pw);
@@ -56,8 +57,10 @@ public abstract class Character extends Entity {
                 + ", leaving " + other.hp + " health.\n\r");
             return false;
         } else {
+	setScore(other.getScore());	
             System.out.print(getName() + " does " + damageDone + " damage to " + other.getName()
-                + ", killing them.\n\r");
+                + ", killing them. You earned +" + other.getScore() + " points!\n\r");
+	    System.out.print("You now have " + getScore() + " points.\n\r");
             return true;
         }
     }

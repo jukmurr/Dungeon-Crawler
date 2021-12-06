@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class Player extends Character {
     private Inventory items;
+    private int score;
 
     public Player(Position start) {
         // our starting details
@@ -17,6 +18,7 @@ public class Player extends Character {
         // give them some basic stuff to start with
         items.addAndEquip(new Item(ItemType.Weapon, "wood sword", 5, 2, 5));
         items.addAndEquip(new Item(ItemType.Armor, "fur Armor", 8, 15, 1));
+	this.score = 0;
     }
     public Player(Scanner in) {
 	    super(in);
@@ -57,5 +59,16 @@ public class Player extends Character {
     public Inventory getInventory() {
         return items;
     }
+    
+    @Override
+    public int getScore(){
+	return score;
+    }
+
+    @Override
+    public void setScore(int enemyPointValue){
+	this.score += enemyPointValue;
+    }
+
 }
 

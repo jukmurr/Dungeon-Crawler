@@ -7,8 +7,10 @@ import java.io.PrintWriter;
 import java.io.FileNotFoundException;
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.Scanner;
 
 public class Game {
+    Scanner sc = new Scanner(System.in);
     private World world;
     private Player player;
     private ArrayList<Box> boxes;
@@ -20,7 +22,6 @@ public class Game {
 	player = new Player(world.getRoomCurrent().getPlayerStart());
         boxes = world.getRoomCurrent().getBoxes();
         enemies = world.getRoomCurrent().getEnemies();
-	
     }
     public void loadGame(){
 	    try{File f= new File("save.txt");
@@ -112,7 +113,7 @@ public class Game {
                 pickup();
                 break;
 
-            case l:
+	    case l:
                 player.getInventory().print();
                 redrawMapAndHelp();
                 break;
@@ -133,6 +134,21 @@ public class Game {
 
             
 	    case m:
+		try{File f = new File("save.txt");
+			Scanner in = new Scanner(f);
+			player = new Player(in);
+			for(Enemy enemy:enemies){
+				Enemy e = new Enemy(in);
+			}
+			for (Box object: boxes){
+				Box b = new Box(in);
+			}
+			Inventory i = new Inventory(in);
+		}catch(Exception e){
+			System.out.println("Oops something went wrong");
+
+           
+	    case s:
 		try{PrintWriter pw=new PrintWriter("save.txt");
 			player.save(pw);
 			for(Enemy enemy:enemies){
@@ -179,7 +195,6 @@ public class Game {
     // returns a Box if the player is on it -- otherwise null
     private Box checkForBox() {
         Position playerLocation = player.getPosition();
-
         for (Box box : boxes) {
             if (playerLocation.equals(box.getPosition())) {
                 return box;
@@ -216,7 +231,6 @@ public class Game {
 
         boolean playing = true;
         while (playing) {
-            // draw the entities
             for (Box box : boxes) {
                 box.draw();
             }
@@ -249,9 +263,19 @@ public class Game {
             if (thingHere != null) {
                 setStatus("Here you find: " + thingHere.getItem().getName());
             }
+	    
+//	    if (player.getPosition().equals('!')){ //need to have it so that the position of the player equals the position of the !
+//		    System.out.print("Would you like to move rooms?(Y/N) ");
+//		    String response = sc.next();
+//		    if (response.equals("Y")){
+//		        world.moveRoom(player.getPosition());
+//			redrawMapAndHelp();
+//		    }
+//	    }
+
 	    if (world.moveRoom(player.getPosition())){
-		redrawMapAndHelp(); 
-       	    }
+		redrawMapAndHelp();
+  	    }
     	}
     }	
 }
