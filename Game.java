@@ -137,13 +137,15 @@ public class Game {
 		try{File f = new File("save.txt");
 			Scanner in = new Scanner(f);
 			player = new Player(in);
-			for(Enemy enemy:enemies){
-				Enemy e = new Enemy(in);
+			while(in.hasNextLine()){
+				if(in.nextLine().equals("enemy")){
+						Enemy e = new Enemy(in);
 			}
-			for (Box object: boxes){
+				else if(in.nextLine().equals("Box")){
 				Box b = new Box(in);
 			}
-			Inventory i = new Inventory(in);
+			//Inventory i = new Inventory(in);
+			}	
 		}catch(Exception e){
 			System.out.println("Oops something went wrong");
 		}

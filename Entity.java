@@ -21,8 +21,8 @@ public class Entity {
     }
     /**
       *Constructor that reads in from the save.txt file. 
-      *@param Scanner parameter takes in a scanner object called in
-      *@return Entity Returns an entity object with the values listed in the save.txt file.
+      *@param in Scanner object 
+      *@return Returns an entity object with the values listed in the save.txt file.
       */
     public Entity(Scanner in){
 	    int row = in.nextInt();
@@ -53,11 +53,17 @@ public class Entity {
     public Color getColor(){
 	    return color;
     }
-
+    
+    /**
+      * Save method prints to file the row, column, and display character of an entity object
+      * @param pw PrintWriter object which is linked to save file
+      * @return prints information into file
+      */
     public void save(PrintWriter pw){
 	    pw.println(this.getRow());
 	    pw.println(this.getCol());
 	    pw.println(this.getDisplay());
+	    pw.println(this.getColor());
     }
 
     // translate the entity in space, unless it would hit a wall

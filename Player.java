@@ -22,15 +22,20 @@ public class Player extends Character {
     }
     /**
       *Constructor that reads in from the save.txt file
-      *@param Scanner parameter  takes in a scanner object called in
-      *@return Player Returns a player object with the values listed in the save.txt file
+      *@param in Scanner object 
+      *@return Returns a player object with the values listed in the save.txt file
       */
     public Player(Scanner in) {
 	    super(in);
     }
-    
+    /**
+      * Save method for player, takes PrintWriter object and prints to file player stats
+      * @param pw PrintWriter object linked to save file
+      * @return prints to file player information
+      */
     public void save(PrintWriter pw){
 	   super.save(pw);
+	   pw.println(this.getScore());
     }
 
     @Override

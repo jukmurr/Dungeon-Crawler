@@ -16,8 +16,7 @@ public class Box extends Entity {
     }
     /**
       *Construcotr that reads in from the save.txt file.
-      *@param Scanner paramater takes in a scanner object called in
-      *@return Box Returns a Box object with the values listed in the save.txt file.
+      *@param in Scanner object 
       */
     public Box(Scanner in){
 	    super(in);
@@ -30,6 +29,11 @@ public class Box extends Entity {
 	    
 
     }
+    /**
+      * Save method uses PrintWriter object to print object information to file, "Box" is printed on the first line for legibility
+      * @param pw PrintWriter object linked to file
+      * @return printed information in file
+      */
     public void save(PrintWriter pw){
 	    pw.println("Box");
 	    super.save(pw);

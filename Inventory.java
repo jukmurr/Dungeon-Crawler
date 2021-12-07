@@ -25,8 +25,8 @@ public class Inventory {
     }
     /**
       *Constructor that reads in from the save.txt file.
-      *@param Scanner parameter takes in a scanner object called in
-      *@return Inventory Returns an Inventory with the values listed in the save.txt file
+      *@param in Scanner object 
+      *@return Returns an Inventory with the values listed in the save.txt file
       */
     public Inventory(Scanner in){
 	    maxWeight = in.nextInt();
@@ -48,12 +48,13 @@ public class Inventory {
 	    int ewStrength = in.nextInt();
     }
 
+    /**
+      * Save method for inventory object, prints maxWeight, iterates through inventory arrayList and prints item information
+      * equippedWeapon and equippedArmor information are also saved
+      * @param pw PrintWriter object linked to save file
+      * @return printed information in file
+      */
 
-	    
-
-
-
-    //save method
     public void save(PrintWriter pw){
 	pw.println(maxWeight);
 	for(int i=0;i<items.size();i++){

@@ -24,8 +24,8 @@ public class Enemy extends Character {
     }
     /**
       *Constructor that reads in from the save.txt file.
-      *@param Scanner Parameter takes in a scanner object called in
-      *@return Enemy Returns an enemy object with the values listed in the save.txt file
+      *@param in Scanner object 
+      *@return Returns an enemy object with the values listed in the save.txt file
       */
     public Enemy(Scanner in){
 	    super(in);
@@ -35,8 +35,12 @@ public class Enemy extends Character {
 	    protection = in.nextInt();
     }
 
-
-
+    /**
+      * Save method take in PrintWriter object and save object information to file, "enemy" is printed as the first line of output
+      * for easier data processing and human readability
+      * @param pw PrintWriter object linked to save file
+      * @return object information printed to file
+      */
     public void save(PrintWriter pw){
 	    pw.println("enemy");
 	    super.save(pw);
