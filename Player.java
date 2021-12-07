@@ -68,12 +68,17 @@ public class Player extends Character {
     public Inventory getInventory() {
         return items;
     }
-    
+    /**
+     *Returns the current score of the player
+     * @return An int representing the player's score
+      */
     @Override
     public int getScore(){
 	return score;
     }
-
+    /**
+    *updates the players score varible after defeating an enemy
+    */
     @Override
     public void setScore(int enemyPointValue){
 	this.score += enemyPointValue;

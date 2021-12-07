@@ -64,6 +64,10 @@ public class Enemy extends Character {
     public String getName() {
         return name;
     }
+    /**
+    *returns the point value of the enemy it is called on
+    *@return an int representing the point value of the enemy
+    */
     @Override
     public int getScore() {
 	return score;
